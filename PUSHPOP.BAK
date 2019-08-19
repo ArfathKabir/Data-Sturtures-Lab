@@ -1,0 +1,92 @@
+#include<stdio.h>
+#include<conio.h>
+#include<process.h>
+int top=-1;
+int stack[30];
+
+void push(int);
+void pop();
+void display();
+void main()
+{
+clrscr();
+int item;
+int ch;
+
+while(1)
+{
+printf("\n\n1,Push\n2.Pop\n3.Display\n4.Exit\n");
+scanf("%d",&ch);
+switch(ch)
+{
+case 1:
+{
+	clrscr();
+	printf("\nEnter the item");
+	scanf("%d",&item);
+	push(item);
+	getch();
+	break;
+}
+
+case 2:
+{
+	clrscr();
+	pop();
+	getch();
+	break;
+}
+
+case 3:
+{
+	clrscr();
+	display();
+	getch();
+	break;
+}
+
+case 4:
+{
+	exit(0);
+}
+default:
+	printf("\nWrong Choice");
+}
+}
+}
+
+void push(int item)
+{
+if(top==30)
+{
+printf("Stack Overflow");
+}
+else
+{
+top++;
+stack[top]=item;
+}
+}
+void pop()
+{
+if(top==-1)
+{
+printf("Underflow");
+}
+else
+{
+printf("Item to be deleted %d",stack[top]);
+top--;
+}
+}
+
+void display()
+{
+if(top==-1)
+printf("Underflow");
+else
+{
+for(int i=0;i<=top;i++)
+printf("%d",stack[i]);
+}
+}
